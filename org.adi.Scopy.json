@@ -3,6 +3,8 @@
 	"runtime": "org.kde.Platform",
 	"sdk": "org.kde.Sdk",
 	"command": "scopy",
+	"rename-desktop-file": "scopy.desktop",
+	"rename-icon": "scopy",
 	"finish-args": [
 		"--socket=x11",
 		"--socket=wayland",
