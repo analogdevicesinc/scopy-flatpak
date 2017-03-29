@@ -279,6 +279,33 @@
 			]
 		},
 		{
+			"name": "qwtpolar",
+			"cleanup": [ "/features" ],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://downloads.sourceforge.net/project/qwtpolar/qwtpolar/1.1.1/qwtpolar-1.1.1.tar.bz2",
+					"sha256": "6168baa9dbc8d527ae1ebf2631313291a1d545da268a05f4caa52ceadbe8b295"
+				},
+				{
+					"type": "patch",
+					"path": "qwtpolar-qwt-6.1-compat.patch",
+					"options": [ "-p1" ]
+				},
+				{
+					"type": "script",
+					"commands": [
+						"#!/bin/sh",
+						"sed -i \"s/^\\s*QWT_POLAR_INSTALL_PREFIX.*$/QWT_POLAR_INSTALL_PREFIX=\\/app/g\" qwtpolarconfig.pri",
+						"sed -i \"s/^QWT_POLAR_CONFIG\\s*+=\\s*QwtPolarDesigner$/#/g\" qwtpolarconfig.pri",
+						"sed -i \"s/^QWT_POLAR_CONFIG\\s*+=\\s*QwtPolarExamples$/#/g\" qwtpolarconfig.pri",
+						"qmake"
+					],
+					"dest-filename": "configure"
+				}
+			]
+		},
+		{
 			"name": "libusb",
 			"config-opts": [ "--disable-udev" ],
 			"sources": [
