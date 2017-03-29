@@ -11,7 +11,7 @@ $(TARGET): repo
 repo: build
 	flatpak build-export $@ $<
 
-build:
+build: clean
 	flatpak-builder $@ $(SRC)
 
 clean:
