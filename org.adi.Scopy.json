@@ -8,7 +8,7 @@
 		"--socket=wayland",
 		"--share=network",
 		"--filesystem=home:ro",
-		"--filesystem=~/.config/ADI/Scopy.ini:rw"
+		"--filesystem=xdg-config/ADI/Scopy.ini:rw"
 	],
 	"cleanup": [
 		"/include",
