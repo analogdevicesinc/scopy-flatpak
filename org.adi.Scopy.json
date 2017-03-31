@@ -180,10 +180,7 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/gnuradio/gnuradio",
-					"_type": "archive",
-					"_url": "http://gnuradio.org/redmine/attachments/download/792/gnuradio-3.7.5.tar.gz",
-					"_sha256": "467f62190687a34f9faa18be8d650e28d7046b94070b1b6d94355c28beb76243"
+					"url": "https://github.com/gnuradio/gnuradio"
 				}
 			]
 		},
@@ -205,7 +202,6 @@
 				{
 					"type": "archive",
 					"url": "http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
-					"_sha256": "1d053813a455bd9157b01312d015f74fa39f33466961a66e844daeaee658f0f1",
 					"sha256": "f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81"
 				}
 			]
@@ -217,7 +213,6 @@
 				{
 					"type": "archive",
 					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.50/glibmm-2.50.0.tar.xz",
-					"_sha256": "c7225326d179d9fdd07491ceea206dca8737775fcce712b48b8e4435dc30a257",
 					"sha256": "df726e3c6ef42b7621474b03b644a2e40ec4eef94a1c5a932c1e740a78f95e94"
 				}
 			]
