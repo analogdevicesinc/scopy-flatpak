@@ -302,7 +302,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/gnuradio",
-					"branch": "signal_source_phase"
+					"branch": "scopy"
 				}
 			]
 		},
@@ -438,7 +438,7 @@
 			"name": "scopy",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_BUILD_TYPE=Release" ],
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release" ],
 			"sources": [
 				{
 					"type": "git",
