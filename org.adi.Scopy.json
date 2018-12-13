@@ -323,7 +323,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/libiio"
+					"url": "https://github.com/analogdevicesinc/libiio",
+					"branch": "v0.15"
 				}
 			]
 		},
@@ -408,7 +409,7 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.13.src.tar.gz",
+					"url": "https://sourceforge.net/projects/doxygen/files/rel-1.8.13/doxygen-1.8.13.src.tar.gz/download",
 					"sha256": "af667887bd7a87dc0dbf9ac8d86c96b552dfb8ca9c790ed1cbffaa6131573f6b"
 				}
 			]
