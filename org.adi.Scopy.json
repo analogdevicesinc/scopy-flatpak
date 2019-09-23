@@ -439,7 +439,7 @@
 			"name": "scopy",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release" ],
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF" ],
 			"sources": [
 				{
 					"type": "git",
