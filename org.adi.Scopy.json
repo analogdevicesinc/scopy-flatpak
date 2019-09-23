@@ -13,9 +13,11 @@
 		"--share=network",
 		"--share=ipc",
 		"--filesystem=host:create",
-		"--filesystem=xdg-config/ADI/Scopy.ini:rw",
+		"--filesystem=~/.config/dconf:create",
+		"--filesystem=xdg-config/ADI:create",
 		"--device=all"
 	],
+
 	"build-options" : {
 		"cflags": "-O2 -g",
 		"cxxflags": "-O2 -g",
