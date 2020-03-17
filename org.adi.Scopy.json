@@ -1,7 +1,7 @@
 {
 	"app-id": "org.adi.Scopy",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.9",
+	"runtime-version": "5.12",
 	"sdk": "org.kde.Sdk",
 	"command": "scopy",
 	"rename-desktop-file": "scopy.desktop",
@@ -43,8 +43,20 @@
 	],
 	"modules": [
 		{
+			"name": "log4cpp",
+			"config-opts": [ "--prefix=/app" ],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://sourceforge.net/projects/log4cpp/files/latest/log4cpp-1.1.3.tar.gz",
+					"sha1": "74f0fea7931dc1bc4e5cd34a6318cd2a51322041",
+					"strip-components": 2
+				}
+			]
+		},
+		{
 			"name": "libusb",
-			"config-opts": [ "--disable-udev" ],
+			"config-opts": [ "--disable-udev", "--prefix=/app" ],
 			"sources": [
 				{
 					"type": "archive",
@@ -54,30 +66,19 @@
 			]
 		},
 		{
-			"name": "libzip",
-			"cleanup": [ "/bin", "/share" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://nih.at/libzip/libzip-1.1.3.tar.xz",
-					"sha256": "729a295a59a9fd6e5b9fe9fd291d36ae391a9d2be0b0824510a214cfaa05ceee"
-				}
-			]
-		},
-		{
 			"name": "boost",
 			"cleanup": [ "/bin", "/share" ],
 			"sources": [
 				{
 					"type": "archive",
-					"url": "https://netcologne.dl.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.tar.gz",
-					"sha256": "fe34a4e119798e10b8cc9e565b3b0284e9fd3977ec8a1b19586ad1dec397088b"
+					"url": "http://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz",
+					"sha256": "8a142d33ab4b4ed0de3abea3280ae3b2ce91c48c09478518c73e5dd2ba8f20aa"
 				},
 				{
 					"type": "script",
 					"commands": [
 						"#!/bin/sh",
-						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread --prefix=/app"
+						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread,atomic --prefix=/app"
 					],
 					"dest-filename": "configure"
 				},
@@ -94,83 +95,48 @@
 			]
 		},
 		{
-			"name": "markdown",
-			"cleanup": [ "*" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://pypi.python.org/packages/1d/25/3f6d2cb31ec42ca5bd3bfbea99b63892b735d76e26f20dd2dcc34ffe4f0d/Markdown-2.6.8.tar.gz",
-					"sha256": "0ac8a81e658167da95d063a9279c9c1b2699f37c7c4153256a458b3a43860e33"
-				},
-				{
-					"type": "script",
-					"commands": [ "#!/bin/sh" ],
-					"dest-filename": "configure"
-				},
-				{
-					"type": "script",
-					"commands": [
-						"all:",
-						"\t./setup.py build",
-						"install:",
-						"\t./setup.py install --prefix=/app"
-					],
-					"dest-filename": "makefile"
-				}
-			]
-		},
-		{
-			"name": "cheetah",
-			"cleanup": [ "*" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://pypi.python.org/packages/cd/b0/c2d700252fc251e91c08639ff41a8a5203b627f4e0a2ae18a6b662ab32ea/Cheetah-2.4.4.tar.gz",
-					"sha256": "be308229f0c1e5e5af4f27d7ee06d90bb19e6af3059794e5fd536a6f29a9b550"
-				},
-				{
-					"type": "script",
-					"commands": [ "#!/bin/sh" ],
-					"dest-filename": "configure"
-				},
-				{
-					"type": "script",
-					"commands": [
-						"all:",
-						"\t./setup.py build",
-						"install:",
-						"\t./setup.py install --prefix=/app"
-					],
-					"dest-filename": "makefile"
-				}
-			]
-		},
-		{
 			"name": "glib",
 			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--disable-threads" ],
+			"config-opts": [ "--prefix=/app" ],
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/gnome/sources/glib/2.51/glib-2.51.2.tar.xz",
-					"sha256": "9bc6ce33af0d5d67506fbbbf692d80c74a9cc18180376c087b6b5061e493756d"
+					"url": "http://ftp.gnome.org/pub/gnome/sources/glib/2.59/glib-2.59.0.tar.xz",
+					"sha256": "664a5dee7307384bb074955f8e5891c7cecece349bbcc8a8311890dc185b428e"
 				}
 			]
 		},
 		{
-			"name": "dbus-glib",
-			"config-opts": [
-				"--enable-static=no",
-				"--enable-bash-completion=no"
-      			],
+			"name": "sigcpp",
+			"config-opts": ["--prefix=/app" ],
+			"cleanup": [ "/bin", "/share" ],
 			"sources": [
-			        {
-				"type": "archive",
-				"url": "https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.108.tar.gz",
-        			"sha256": "9f340c7e2352e9cdf113893ca77ca9075d9f8d5e81476bf2bf361099383c602c"
-        			}
-      			]
-    		},
+				{
+					"type": "archive",
+					"url": "http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
+					"sha256": "f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81"
+				}
+			]
+		},
+		{
+			"name": "glibmm",
+			"cleanup": [ "/bin", "/share" ],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.56/glibmm-2.56.0.tar.xz",
+					"sha256": "6e74fcba0d245451c58fc8a196e9d103789bc510e1eee1a9b1e816c5209e79a9"
+				}
+			]
+		},
+		"shared-modules/dbus-glib/dbus-glib-0.110.json",
+		{
+			"name": "dbus-glib-submodule"
+		},
+		"shared-modules/intltool/intltool-0.51.json",
+		{
+			"name": "intltool-submodule"
+		},
     		{
       			"name": "dbus-python",
 			"sources": [
@@ -189,6 +155,8 @@
 				"--disable-gtk3",
 				"--disable-qt3",
 				"--disable-qt4",
+				"--disable-pygobject",
+				"--disable-gdbm",
 				"--disable-libdaemon",
 				"--disable-mono",
 				"--disable-pygtk",
@@ -198,8 +166,8 @@
 			"sources": [
        				{
 				"type": "archive",
-				"url": "https://github.com/lathiat/avahi/releases/download/v0.6.32/avahi-0.6.32.tar.gz",
-				"sha256": "d54991185d514a0aba54ebeb408d7575b60f5818a772e28fa0e18b98bc1db454"
+				"url": "https://github.com/lathiat/avahi/releases/download/v0.7/avahi-0.7.tar.gz",
+				"sha256": "57a99b5dfe7fdae794e3d1ee7a62973a368e91e414bd0dfa5d84434de5b14804"
         			}
 			]
 		},
@@ -210,44 +178,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/GNOME/libxml2"
-				}
-			]
-		},
-		{
-			"name": "sigcpp",
-			"cleanup": [ "/bin", "/share" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
-					"sha256": "f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81"
-				}
-			]
-		},
-		{
-			"name": "glibmm",
-			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--disable-threads" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.46/glibmm-2.46.3.tar.xz",
-					"sha256": "c78654addeb27a1213bedd7cd21904a45bbb98a5ba2f2f0de2b2f1a5682d86cf"
-				}
-			]
-		},
-		{
-			"name": "libvolk",
-			"cleanup": [ "/bin", "/share" ],
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://libvolk.org/releases/volk-1.3.tar.gz",
-					"sha256": "90b69515d3cc6d76bbc589cec63d600b690bffe2e2938be2f895176f18f7e3af"
+					"url": "https://github.com/GNOME/libxml2",
+					"branch": "mainline"
 				}
 			]
 		},
@@ -269,16 +201,58 @@
 			"config-opts": [
 				"--enable-shared",
 				"--disable-static",
-        			"--enable-threads",
+				"--enable-threads",
 			        "--enable-single"
-      			],
-		      	"sources": [
+			],
+			"sources": [
 			        {
-				"type": "archive",
-	  			"url": "http://www.fftw.org/fftw-3.3.5.tar.gz",
-				"sha256": "8ecfe1b04732ec3f5b7d279fdb8efcad536d555f9d1e8fabd027037d45ea8bcf"
-        			}
-      			]
+					"type": "archive",
+					"url": "http://www.fftw.org/fftw-3.3.5.tar.gz",
+					"sha256": "8ecfe1b04732ec3f5b7d279fdb8efcad536d555f9d1e8fabd027037d45ea8bcf"
+				}
+			]
+		},
+		{
+			"name": "python3-mako",
+			"buildsystem": "simple",
+			"build-commands": [
+				"pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=/app mako"
+			],
+			"sources": [
+				{
+					"type": "file",
+					"url": "https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz",
+					"sha256": "29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b"
+				},
+				{
+					"type": "file",
+					"url": "https://files.pythonhosted.org/packages/28/03/329b21f00243fc2d3815399413845dbbfb0745cff38a29d3597e97f8be58/Mako-1.1.1.tar.gz",
+					"sha256": "2984a6733e1d472796ceef37ad48c26f4a984bb18119bb2dbc37a44d8f6e75a4"
+				}
+			],
+			"cleanup": [ "*" ]
+		},
+		{
+			"name": "libgmp",
+			"config-opts": [ "--prefix=/app", "--enable-cxx"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.bz2",
+					"sha256": "f51c99cb114deb21a60075ffb494c1a210eb9d7cb729ed042ddb7de9534451ea"
+				}
+			]
+		},
+		{
+			"name": "liborc",
+			"config-opts": [ "--prefix=/app"],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://gstreamer.freedesktop.org/data/src/orc/orc-0.4.28.tar.xz",
+					"sha256": "bfcd7c6563b05672386c4eedfc4c0d4a0a12b4b4775b74ec6deb88fc2bcd83ce"
+				}
+			]
 		},
 		{
 			"name": "gnuradio",
@@ -287,24 +261,23 @@
 			"buildsystem": "cmake",
 			"config-opts": [
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
-				"-DENABLE_INTERNAL_VOLK:BOOL=OFF",
-				"-DENABLE_GR_FEC:BOOL=OFF",
 				"-DENABLE_GR_DIGITAL:BOOL=OFF",
 				"-DENABLE_GR_DTV:BOOL=OFF",
-				"-DENABLE_GR_ATSC:BOOL=OFF",
 				"-DENABLE_GR_AUDIO:BOOL=OFF",
 				"-DENABLE_GR_CHANNELS:BOOL=OFF",
-				"-DENABLE_GR_NOAA:BOOL=OFF",
-				"-DENABLE_GR_PAGER:BOOL=OFF",
 				"-DENABLE_GR_TRELLIS:BOOL=OFF",
 				"-DENABLE_GR_VOCODER:BOOL=OFF",
-				"-DENABLE_DOXYGEN=OFF"
+				"-DENABLE_GR_FEC:BOOL=OFF",
+				"-DENABLE_SPHINX:BOOL=OFF",
+				"-DENABLE_DOXYGEN:BOOL=OFF",
+				"-DENABLE_INTERNAL_VOLK:BOOL=ON",
+				"-DCMAKE_C_FLAGS=-fno-asynchronous-unwind-tables"
 			],
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/gnuradio",
-					"branch": "scopy"
+					"branch": "ming-3.8-clean"
 				}
 			]
 		},
@@ -326,7 +299,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"branch": "v0.18"
+					"branch": "v0.19"
 				}
 			]
 		},
@@ -344,6 +317,36 @@
 		},
 {
 			"name": "gr-iio",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_BUILD_TYPE=Release" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/gr-iio",
+					"branch": "upgrade-3.8"
+				}
+			]
+		},
+		{
+			"name": "libm2k",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DENABLE_PYTHON=OFF",
+				"-DENABLE_CSHARP=OFF"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/libm2k",
+					"branch": "master"
+				}
+			]
+		},
+		{
+			"name": "gr-m2k",
 			"cleanup": [ "/share" ],
 			"builddir": true,
 			"buildsystem": "cmake",
@@ -351,7 +354,20 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gr-iio"
+					"url": "https://github.com/analogdevicesinc/gr-m2k"
+				}
+			]
+		},
+		{
+			"name": "gr-scopy",
+			"cleanup": [ "/share" ],
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/gr-scopy"
 				}
 			]
 		},
@@ -417,6 +433,17 @@
 			]
 		},
 		{
+			"name": "libzip",
+			"cleanup": [ "/bin", "/share" ],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://nih.at/libzip/libzip-1.1.3.tar.xz",
+					"sha256": "729a295a59a9fd6e5b9fe9fd291d36ae391a9d2be0b0824510a214cfaa05ceee"
+				}
+			]
+		},
+		{
 			"name": "sigrok",
 			"cleanup": [ "/bin", "/share" ],
 			"config-opts": [ "--disable-all-drivers", "--enable-bindings", "--enable-cxx" ],
@@ -441,11 +468,12 @@
 			"name": "scopy",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF" ],
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF" ],
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/scopy"
+					"url": "https://github.com/analogdevicesinc/scopy",
+					"branch": "master"
 				}
 			]
 		}
