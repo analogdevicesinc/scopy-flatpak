@@ -419,20 +419,6 @@
 			]
 		},
 		{
-			"name": "doxygen",
-			"cleanup": [ "*" ],
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://sourceforge.net/projects/doxygen/files/rel-1.8.13/doxygen-1.8.13.src.tar.gz",
-					"sha256": "af667887bd7a87dc0dbf9ac8d86c96b552dfb8ca9c790ed1cbffaa6131573f6b"
-				}
-			]
-		},
-		{
 			"name": "libzip",
 			"cleanup": [ "/bin", "/share" ],
 			"sources": [
@@ -440,17 +426,6 @@
 					"type": "archive",
 					"url": "https://nih.at/libzip/libzip-1.1.3.tar.xz",
 					"sha256": "729a295a59a9fd6e5b9fe9fd291d36ae391a9d2be0b0824510a214cfaa05ceee"
-				}
-			]
-		},
-		{
-			"name": "sigrok",
-			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--disable-all-drivers", "--enable-bindings", "--enable-cxx" ],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/sigrokproject/libsigrok/"
 				}
 			]
 		},
