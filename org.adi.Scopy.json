@@ -434,8 +434,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://sigrok.org/download/source/libsigrokdecode/libsigrokdecode-0.4.1.tar.gz",
-					"sha256": "065f70c10971173d86e03a8cf5534e600c7a622775113997d8061572135d4a95"
+					"url": "http://sigrok.org/download/source/libsigrokdecode/libsigrokdecode-0.5.3.tar.gz",
+					"sha256": "c50814aa6743cd8c4e88c84a0cdd8889d883c3be122289be90c63d7d67883fc0"
 				}
 			]
 		},
