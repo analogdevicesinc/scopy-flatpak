@@ -419,20 +419,6 @@
 			]
 		},
 		{
-			"name": "doxygen",
-			"cleanup": [ "*" ],
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://sourceforge.net/projects/doxygen/files/rel-1.8.13/doxygen-1.8.13.src.tar.gz",
-					"sha256": "af667887bd7a87dc0dbf9ac8d86c96b552dfb8ca9c790ed1cbffaa6131573f6b"
-				}
-			]
-		},
-		{
 			"name": "libzip",
 			"cleanup": [ "/bin", "/share" ],
 			"sources": [
@@ -444,23 +430,12 @@
 			]
 		},
 		{
-			"name": "sigrok",
-			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--disable-all-drivers", "--enable-bindings", "--enable-cxx" ],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/sigrokproject/libsigrok/"
-				}
-			]
-		},
-		{
 			"name": "sigrokdecode",
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://sigrok.org/download/source/libsigrokdecode/libsigrokdecode-0.4.1.tar.gz",
-					"sha256": "065f70c10971173d86e03a8cf5534e600c7a622775113997d8061572135d4a95"
+					"url": "http://sigrok.org/download/source/libsigrokdecode/libsigrokdecode-0.5.3.tar.gz",
+					"sha256": "c50814aa6743cd8c4e88c84a0cdd8889d883c3be122289be90c63d7d67883fc0"
 				}
 			]
 		},
