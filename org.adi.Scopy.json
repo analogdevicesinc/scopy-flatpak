@@ -179,7 +179,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/GNOME/libxml2",
-					"branch": "mainline"
+					"branch": "master"
 				}
 			]
 		},
