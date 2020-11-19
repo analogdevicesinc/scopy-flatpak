@@ -43,6 +43,16 @@
 	],
 	"modules": [
 		{
+			"name": "sshpass",
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://sourceforge.net/projects/sshpass/files/latest/sshpass-1.06.tar.gz",
+					"sha1": "633652e2160819ac7c7e1a351327027d2faa4fd6"
+				}
+			]
+		},
+		{
 			"name": "log4cpp",
 			"config-opts": [ "--prefix=/app" ],
 			"sources": [
