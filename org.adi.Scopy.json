@@ -309,7 +309,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"branch": "v0.19"
+					"branch": "v0.21"
 				}
 			]
 		},
