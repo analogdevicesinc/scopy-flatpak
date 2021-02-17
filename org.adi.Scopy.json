@@ -111,8 +111,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/gnome/sources/glib/2.59/glib-2.59.0.tar.xz",
-					"sha256": "664a5dee7307384bb074955f8e5891c7cecece349bbcc8a8311890dc185b428e"
+					"url": "http://ftp.gnome.org/pub/gnome/sources/glib/2.58/glib-2.58.3.tar.xz",
+					"sha256": "8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481"
 				}
 			]
 		},
@@ -134,8 +134,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.56/glibmm-2.56.0.tar.xz",
-					"sha256": "6e74fcba0d245451c58fc8a196e9d103789bc510e1eee1a9b1e816c5209e79a9"
+					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.58/glibmm-2.58.1.tar.xz",
+					"sha256": "6e5fe03bdf1e220eeffd543e017fd2fb15bcec9235f0ffd50674aff9362a85f0"
 				}
 			]
 		},
@@ -287,7 +287,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/gnuradio",
-					"branch": "ming-3.8-clean"
+					"branch": "scopy"
 				}
 			]
 		},
@@ -310,6 +310,30 @@
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
 					"branch": "v0.21"
+				}
+			]
+		},
+		{
+			"name": "libtinyiiod",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/libtinyiiod"
+				}
+			]
+		},
+		{
+			"name": "glog",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/google/glog"
 				}
 			]
 		},
