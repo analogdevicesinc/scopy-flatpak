@@ -317,7 +317,10 @@
 			"name": "libtinyiiod",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app" ,
+				"-DBUILD_EXAMPLES=OFF"
+			],
 			"sources": [
 				{
 					"type": "git",
@@ -329,7 +332,10 @@
 			"name": "glog",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DWITH_GFLAGS=OFF"
+			],
 			"sources": [
 				{
 					"type": "git",
@@ -369,7 +375,8 @@
 			"config-opts": [
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
 				"-DENABLE_PYTHON=OFF",
-				"-DENABLE_CSHARP=OFF"
+				"-DENABLE_CSHARP=OFF",
+				"-DENABLE_LOG=ON"
 			],
 			"sources": [
 				{
