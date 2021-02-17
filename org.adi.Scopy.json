@@ -317,7 +317,11 @@
 			"name": "libtinyiiod",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DBUILD_SHARED_LIBS=OFF",
+				"-DBUILD_EXAMPLES=OFF"
+			],
 			"sources": [
 				{
 					"type": "git",
@@ -329,7 +333,10 @@
 			"name": "glog",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DWITH_GFLAGS=OFF"
+			],
 			"sources": [
 				{
 					"type": "git",
@@ -369,7 +376,8 @@
 			"config-opts": [
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
 				"-DENABLE_PYTHON=OFF",
-				"-DENABLE_CSHARP=OFF"
+				"-DENABLE_CSHARP=OFF",
+				"-DENABLE_LOG=ON"
 			],
 			"sources": [
 				{
@@ -477,7 +485,7 @@
 			"name": "scopy",
 			"builddir": true,
 			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF" ],
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF"],
 			"sources": [
 				{
 					"type": "git",
