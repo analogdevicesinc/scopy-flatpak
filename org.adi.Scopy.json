@@ -81,14 +81,14 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz",
-					"sha256": "8a142d33ab4b4ed0de3abea3280ae3b2ce91c48c09478518c73e5dd2ba8f20aa"
+					"url": "https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz",
+					"sha256": "c66e88d5786f2ca4dbebb14e06b566fb642a1a6947ad8cc9091f9f445134143f"
 				},
 				{
 					"type": "script",
 					"commands": [
 						"#!/bin/sh",
-						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread,atomic --prefix=/app"
+						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread,atomic,chrono --prefix=/app"
 					],
 					"dest-filename": "configure"
 				},
@@ -148,16 +148,6 @@
 			"name": "intltool-submodule"
 		},
     		{
-      			"name": "dbus-python",
-			"sources": [
-        			{
-				"type": "archive",
-				"url": "https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.2.4.tar.gz",
-				"sha256": "e2f1d6871f74fba23652e51d10873e54f71adab0525833c19bad9e99b1b2f9cc"
-			        }
-      			]
-		},
-		{
 			"name": "avahi",
 			"config-opts": [
 				"--disable-monodoc",
@@ -170,6 +160,7 @@
 				"--disable-libdaemon",
 				"--disable-mono",
 				"--disable-pygtk",
+				"--disable-dbus",
 				"--enable-compat-libdns_sd",
 				"--with-distro=none"
       			],
@@ -244,7 +235,7 @@
 		},
 		{
 			"name": "libgmp",
-			"config-opts": [ "--prefix=/app", "--enable-cxx"],
+			"config-opts": [ "--prefix=/app", "--enable-cxx", "CFLAGS=-march=armv7-a -mfpu=neon -mfloat-abi=hard","ASFLAGS= -mcpu=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=hard"],
 			"sources": [
 				{
 					"type": "archive",
@@ -255,12 +246,29 @@
 		},
 		{
 			"name": "liborc",
-			"config-opts": [ "--prefix=/app"],
+			"config-opts": [ "--prefix=/app", "CFLAGS=-march=armv7-a -mfpu=neon -mfloat-abi=hard","ASFLAGS= -mcpu=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=hard"],
 			"sources": [
 				{
 					"type": "archive",
 					"url": "https://gstreamer.freedesktop.org/data/src/orc/orc-0.4.28.tar.xz",
 					"sha256": "bfcd7c6563b05672386c4eedfc4c0d4a0a12b4b4775b74ec6deb88fc2bcd83ce"
+				}
+			]
+		},
+		{
+			"name": "libvolk",
+			"cleanup": [ "/bin", "/share" ],
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DCMAKE_C_FLAGS=-fno-asynchronous-unwind-tables -march=armv7-a -mfpu=neon -mfloat-abi=hard","-DCMAKE_ASM_FLAGS= -mcpu=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=hard"
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://swdownloads.analog.com/cse/scopydeps/volk-2.4.1.tar.gz",
+					"sha256": "61d681f90e0f30894f806ab050e9ba28260799c01f1ed0f58623942d8c7f4d48"
 				}
 			]
 		},
@@ -280,8 +288,8 @@
 				"-DENABLE_GR_FEC:BOOL=OFF",
 				"-DENABLE_SPHINX:BOOL=OFF",
 				"-DENABLE_DOXYGEN:BOOL=OFF",
-				"-DENABLE_INTERNAL_VOLK:BOOL=ON",
-				"-DCMAKE_C_FLAGS=-fno-asynchronous-unwind-tables"
+				"-DENABLE_INTERNAL_VOLK:BOOL=OFF",
+				"-DCMAKE_C_FLAGS=-fno-asynchronous-unwind-tables -march=armv7-a -mfpu=neon -mfloat-abi=hard","-DCMAKE_ASM_FLAGS= -mcpu=cortex-a5 -mfpu=neon-vfpv4 -mfloat-abi=hard"
 			],
 			"sources": [
 				{

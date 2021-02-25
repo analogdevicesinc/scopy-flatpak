@@ -1,5 +1,6 @@
 TARGET := Scopy.flatpak
 SRC := org.adi.Scopy.json
+ARCH := x86_64
 
 .PHONY: all clean
 
@@ -12,7 +13,7 @@ repo: build
 	flatpak build-export $@ $<
 
 build: clean
-	flatpak-builder $@ $(SRC)
+	flatpak-builder --verbose --arch=$(ARCH) $@ $(SRC)
 
 clean:
 	rm -rf $(TARGET) build repo
