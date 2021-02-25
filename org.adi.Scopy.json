@@ -1,7 +1,7 @@
 {
 	"app-id": "org.adi.Scopy",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.14",
+	"runtime-version": "5.15",
 	"sdk": "org.kde.Sdk",
 	"command": "scopy",
 	"rename-desktop-file": "scopy.desktop",
