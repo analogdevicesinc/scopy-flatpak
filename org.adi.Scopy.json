@@ -212,13 +212,17 @@
 				"--enable-shared",
 				"--disable-static",
 				"--enable-threads",
-			        "--enable-single"
+			        "--enable-single",
+			        "--enable-float",
+			        "--enable-sse2",
+			        "--enable-avx",
+				"--enable-openmp"
 			],
 			"sources": [
 			        {
 					"type": "archive",
-					"url": "http://www.fftw.org/fftw-3.3.5.tar.gz",
-					"sha256": "8ecfe1b04732ec3f5b7d279fdb8efcad536d555f9d1e8fabd027037d45ea8bcf"
+					"url": "http://swdownloads.analog.com/cse/scopydeps/fftw-3.3.8.tar.gz",
+					"sha256": "6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303"
 				}
 			]
 		},
