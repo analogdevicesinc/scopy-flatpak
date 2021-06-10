@@ -81,8 +81,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz",
-					"sha256": "8a142d33ab4b4ed0de3abea3280ae3b2ce91c48c09478518c73e5dd2ba8f20aa"
+					"url": "https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source/boost_1_65_1.tar.gz",
+					"sha256": "a13de2c8fbad635e6ba9c8f8714a0e6b4264b60a29b964b940a22554705b6b60"
 				},
 				{
 					"type": "script",
