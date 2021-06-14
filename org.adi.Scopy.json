@@ -248,7 +248,7 @@
 		},
 		{
 			"name": "libgmp",
-			"config-opts": [ "--prefix=/app", "--enable-cxx", "--enable-fat"],
+			"config-opts": [ "--prefix=/app", "--enable-cxx", "--disable-assembly"],
 			"sources": [
 				{
 					"type": "archive",
