@@ -28,5 +28,6 @@ ARG REPO_BRANCH=master
 RUN git clone --recurse-submodules "$REPO_LINK" -b "$REPO_BRANCH" "$REPO_LOCAL" 2> /dev/null || (cd "$REPO_LOCAL"; git pull)
 
 #RUN cd /home/docker/scopy-flatpak && make -j4
+#RUN rm -rf Scopy.flatpak
 CMD ["/bin/bash"]
 

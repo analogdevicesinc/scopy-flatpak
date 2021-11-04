@@ -275,6 +275,11 @@
 			"buildsystem": "cmake",
 			"config-opts": [
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DENABLE_GNURADIO_RUNTIME=ON",
+				"-DENABLE_GR_ANALOG=ON",
+				"-DENABLE_GR_BLOCKS=ON",
+				"-DENABLE_GR_FFT=ON",
+				"-DENABLE_GR_FILTER=ON",
 				"-DENABLE_GR_DIGITAL:BOOL=OFF",
 				"-DENABLE_GR_DTV:BOOL=OFF",
 				"-DENABLE_GR_AUDIO:BOOL=OFF",
