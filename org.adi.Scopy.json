@@ -349,6 +349,7 @@
 			"sources": [
 				{
 					"type": "git",
+					"commit": "17e7679fd9beb95277ccd0708056ba85363f892b" ,
 					"url": "https://github.com/google/glog"
 				}
 			]
@@ -386,7 +387,8 @@
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
 				"-DENABLE_PYTHON=OFF",
 				"-DENABLE_CSHARP=OFF",
-				"-DENABLE_LOG=ON"
+				"-DENABLE_LOG=ON" ,
+				"--debug-find"
 			],
 			"sources": [
 				{
