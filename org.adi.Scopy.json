@@ -481,6 +481,19 @@
 			]
 		},
 		{
+			"name": "qtadvanceddocking",
+			"builddir": true,
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"buildsystem": "cmake",
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System",
+					"tag": "3.8.1"
+				}
+			]
+		},
+		{
 			"name": "scopy",
 			"builddir": true,
 			"buildsystem": "cmake",
