@@ -429,15 +429,13 @@
 			"cleanup": [ "/features", "/plugins", "/share" ],
 			"sources": [
 				{
-					"type": "svn",
-					"url": "svn://svn.code.sf.net/p/qwt/code/branches/qwt-6.1-multiaxes",
-					"revision":"3377",
-					"branch": "qwt-6.1-multiaxes"
+					"type": "git",
+					"url": "https://github.com/cseci/qwt",
+					"branch": "qwt-multiaxes"
 				},
 				{
 					"type": "script",
 					"commands": [
-						"#!/bin/sh",
 						"sed -i \"s/^\\s*QWT_INSTALL_PREFIX.*$/QWT_INSTALL_PREFIX=\\/app/g\" qwtconfig.pri",
 						"qmake"
 					],
