@@ -1,7 +1,9 @@
+#include "defined_variables.h"
+
 {
 	"app-id": "org.adi.Scopy",
 	"runtime": "org.kde.Platform",
-	"runtime-version": "5.15",
+	"runtime-version": EXPAND(RUNTIME_VERSION),
 	"sdk": "org.kde.Sdk",
 	"command": "scopy",
 	"rename-desktop-file": "scopy.desktop",
@@ -23,8 +25,8 @@
 		"cxxflags": "-O2 -g",
 		"env": {
 			"V": "1"
-		}	
-		
+		}
+
 	},
 	"cleanup": [
 		"/include",
@@ -88,7 +90,7 @@
 					"type": "script",
 					"commands": [
 						"#!/bin/sh",
-						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread,atomic --prefix=/app"
+						"exec ./bootstrap.sh --with-libraries=date_time,filesystem,program_options,regex,system,test,thread,atomic,chrono --prefix=/app"
 					],
 					"dest-filename": "configure"
 				},
@@ -147,15 +149,15 @@
 		{
 			"name": "intltool-submodule"
 		},
-    		{
-      			"name": "dbus-python",
-			"sources": [
-        			{
-				"type": "archive",
-				"url": "https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.2.16.tar.gz",
-				"sha256": "11238f1d86c995d8aed2e22f04a1e3779f0d70e587caffeab4857f3c662ed5a4"
-			        }
-      			]
+		{
+		    "name": "dbus-python",
+		    "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.2.16.tar.gz",
+                    "sha256": "11238f1d86c995d8aed2e22f04a1e3779f0d70e587caffeab4857f3c662ed5a4"
+                }
+			]
 		},
 		{
 			"name": "avahi",
@@ -170,6 +172,9 @@
 				"--disable-libdaemon",
 				"--disable-mono",
 				"--disable-pygtk",
+#ifdef __ARM__
+                "--disable-dbus",
+#endif
 				"--enable-compat-libdns_sd",
 				"--with-distro=none"
       			],
@@ -212,10 +217,10 @@
 				"--enable-shared",
 				"--disable-static",
 				"--enable-threads",
-			        "--enable-single",
-			        "--enable-float",
-			        "--enable-sse2",
-			        "--enable-avx",
+                "--enable-single",
+                "--enable-float",
+                "--enable-sse2",
+                "--enable-avx",
 				"--enable-openmp"
 			],
 			"sources": [
@@ -248,7 +253,12 @@
 		},
 		{
 			"name": "libgmp",
-			"config-opts": [ "--prefix=/app", "--enable-cxx", "--disable-assembly"],
+			"config-opts": [ "--prefix=/app", "--enable-cxx",
+		    EXPAND(CFLAGS)
+#ifdef __ARM__
+            ,EXPAND(ASFLAGS)
+#endif
+            ],
 			"sources": [
 				{
 					"type": "archive",
@@ -259,7 +269,11 @@
 		},
 		{
 			"name": "liborc",
-			"config-opts": [ "--prefix=/app"],
+			"config-opts": [ "--prefix=/app"
+#ifdef __ARM__
+            ,EXPAND(CFLAGS) ,EXPAND(ASFLAGS)
+#endif
+            ],
 			"sources": [
 				{
 					"type": "archive",
@@ -268,6 +282,25 @@
 				}
 			]
 		},
+#ifdef __ARM__
+		{
+			"name": "libvolk",
+			"cleanup": [ "/bin", "/share" ],
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [
+            "-DCMAKE_INSTALL_PREFIX:PATH=/app",
+            EXPAND(CMAKE_C_FLAGS), EXPAND(CMAKE_ASM_FLAGS)
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://swdownloads.analog.com/cse/scopydeps/volk-2.4.1.tar.gz",
+					"sha256": "61d681f90e0f30894f806ab050e9ba28260799c01f1ed0f58623942d8c7f4d48"
+				}
+			]
+		},
+#endif
 		{
 			"name": "gnuradio",
 			"cleanup": [ "/bin", "/share" ],
@@ -289,8 +322,11 @@
 				"-DENABLE_GR_FEC:BOOL=OFF",
 				"-DENABLE_SPHINX:BOOL=OFF",
 				"-DENABLE_DOXYGEN:BOOL=OFF",
-				"-DENABLE_INTERNAL_VOLK:BOOL=ON",
-				"-DCMAKE_C_FLAGS=-fno-asynchronous-unwind-tables"
+                EXPAND(DENABLE_INTERNAL_VOLK),
+                EXPAND(CMAKE_C_FLAGS)
+#ifdef __ARM__
+                , EXPAND(CMAKE_ASM_FLAGS)
+#endif
 			],
 			"sources": [
 				{
@@ -366,7 +402,7 @@
 				}
 			]
 		},
-{
+        {
 			"name": "gr-iio",
 			"builddir": true,
 			"buildsystem": "cmake",
@@ -500,7 +536,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/scopy",
-					"branch": "master"
+					"branch": "port-qwt"
 				}
 			]
 		}
