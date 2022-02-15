@@ -354,7 +354,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"branch": "v0.23"
+					"commit": "0ed18cd8f6b2fac5204a99e38922bea73f1f778c"
 				}
 			]
 		},
@@ -514,6 +514,7 @@
 				}
 			]
 		},
+#if 0
 		{
 			"name": "qtadvanceddocking",
 			"builddir": true,
@@ -527,6 +528,7 @@
 				}
 			]
 		},
+#endif
 		{
 			"name": "scopy",
 			"builddir": true,
