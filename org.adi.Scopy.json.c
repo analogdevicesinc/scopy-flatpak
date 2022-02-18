@@ -149,6 +149,7 @@
 		{
 			"name": "intltool-submodule"
 		},
+#ifndef __ARM__
 		{
 		    "name": "dbus-python",
 		    "sources": [
@@ -159,6 +160,7 @@
                 }
 			]
 		},
+#endif
 		{
 			"name": "avahi",
 			"config-opts": [
@@ -217,11 +219,13 @@
 				"--enable-shared",
 				"--disable-static",
 				"--enable-threads",
-                "--enable-single",
-                "--enable-float",
+                "--enable-single"
+#ifdef __X86__
+                ,"--enable-float",
                 "--enable-sse2",
                 "--enable-avx",
 				"--enable-openmp"
+#endif
 			],
 			"sources": [
 			        {
@@ -271,7 +275,7 @@
 			"name": "liborc",
 			"config-opts": [ "--prefix=/app"
 #ifdef __ARM__
-            ,EXPAND(CFLAGS) ,EXPAND(ASFLAGS)
+            ,EXPAND(CFLAGS) ,EXPAND(ASFLAGS) 
 #endif
             ],
 			"sources": [
@@ -346,6 +350,7 @@
 				"-DINSTALL_UDEV_RULE:BOOL=OFF",
 				"-DWITH_TESTS:BOOL=OFF",
 				"-DWITH_DOC:BOOL=OFF",
+				"-DHAVE_DNS_SD:BOOL=OFF",
 				"-DWITH_IIOD:BOOL=OFF",
 				"-DWITH_LOCAL_BACKEND:BOOL=OFF",
 				"-DWITH_MATLAB_BINDINGS_API:BOOL=OFF"
