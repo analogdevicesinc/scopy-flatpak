@@ -352,7 +352,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"commit": "0ed18cd8f6b2fac5204a99e38922bea73f1f778c"
+					"commit": "b1099c96c9ac16d468995a65b79474ba03de305c"
 				}
 			]
 		},
@@ -536,7 +536,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/scopy",
-					"branch": "port-qwt"
+					"branch": "master"
 				}
 			]
 		}
