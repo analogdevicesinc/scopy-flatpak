@@ -5,7 +5,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update -y
 
 # Install base dependencies
-RUN apt-get install -y software-properties-common build-essential git sudo apt-utils subversion
+RUN apt-get install -y software-properties-common build-essential git sudo apt-utils subversion mm-common
 
 # Install flatpak
 RUN add-apt-repository ppa:alexlarsson/flatpak -y

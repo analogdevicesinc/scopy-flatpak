@@ -107,41 +107,42 @@
 			]
 		},
 		{
-			"name": "glib",
-			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--prefix=/app" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/gnome/sources/glib/2.58/glib-2.58.3.tar.xz",
-					"sha256": "8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481"
-				}
-			]
+		   "name": "mm-common",
+		   "cleanup": [ "/" ],
+		   "sources": [
+		       {
+		           "type": "archive",
+		           "url": "https://download.gnome.org/sources/mm-common/0.9/mm-common-0.9.12.tar.xz",
+		           "sha256": "ceffdcce1e5b52742884c233ec604bf6fded12eea9da077ce7a62c02c87e7c0b"
+		       }
+		   ]
 		},
 		{
-			"name": "sigcpp",
-			"config-opts": ["--prefix=/app" ],
-			"cleanup": [ "/bin", "/share" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
-					"sha256": "f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81"
-				}
-			]
+		"name": "sigcpp",
+		"config-opts": ["--prefix=/app","--disable-documentation" ],
+		"cleanup": [ "/bin", "/share" ],
+		"sources": [
+			{
+				"type": "archive",
+				"url": "https://download.gnome.org/sources/libsigc%2B%2B/3.0/libsigc%2B%2B-3.0.7.tar.xz",
+				"sha256": "bfbe91c0d094ea6bbc6cbd3909b7d98c6561eea8b6d9c0c25add906a6e83d733"
+			}
+		]
 		},
 		{
 			"name": "glibmm",
-			"cleanup": [ "/bin", "/share" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.acc.umu.se/pub/gnome/sources/glibmm/2.58/glibmm-2.58.1.tar.xz",
-					"sha256": "6e5fe03bdf1e220eeffd543e017fd2fb15bcec9235f0ffd50674aff9362a85f0"
-				}
-			]
+			"config-opts": ["--prefix=/app"],
+		        "cleanup": [ "/bin", "/share" ],
+			"buildsystem": "meson",
+		        "sources": [
+		                 {
+		                  "type": "archive",
+		                  "url": "https://download.gnome.org/sources/glibmm/2.68/glibmm-2.68.2.tar.xz",
+		                  "sha256": "91e0a8618f7b82db4aaf2648932ea2bcfe626ad030068c18fa2d106fd838d8ad"
+		               }
+		       ]
 		},
-		"shared-modules/dbus-glib/dbus-glib-0.110.json",
+		"shared-modules/dbus-glib/dbus-glib.json",
 		{
 			"name": "dbus-glib-submodule"
 		},
@@ -527,18 +528,18 @@
 			]
 		},
 #endif
-		{
-			"name": "scopy",
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF"],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/analogdevicesinc/scopy",
-					"branch": "master"
-				}
-			]
-		}
-	]
-}
+	{
+		"name": "scopy",
+		"builddir": true,
+		"buildsystem": "cmake",
+		"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF"],
+		"sources": [
+			{
+				"type": "git",
+				"url": "https://github.com/analogdevicesinc/scopy",
+				"branch": "pkgconfig-ver-update"
+			}
+		]
+	}
+ ]
+ }
