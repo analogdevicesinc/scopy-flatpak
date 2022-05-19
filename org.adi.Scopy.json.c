@@ -37,10 +37,8 @@
 		"/lib/*.a",
 		"/lib/gio",
 		"/lib/giomm-2.4",
-		"/lib/glibmm-2.4",
 		"/lib/libzip",
 		"/lib/libgthread*",
-		"/lib/sigc++-2.0",
 		"/lib/xml2Conf.sh"
 	],
 	"modules": [
@@ -51,18 +49,6 @@
 					"type": "archive",
 					"url": "https://sourceforge.net/projects/sshpass/files/sshpass/1.08/sshpass-1.08.tar.gz",
 					"sha1": "efe4573ba2fe972b08cf1cdd95739b7f456e55c1"
-				}
-			]
-		},
-		{
-			"name": "log4cpp",
-			"config-opts": [ "--prefix=/app" ],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://sourceforge.net/projects/log4cpp/files/latest/log4cpp-1.1.3.tar.gz",
-					"sha1": "74f0fea7931dc1bc4e5cd34a6318cd2a51322041",
-					"strip-components": 2
 				}
 			]
 		},
@@ -105,42 +91,6 @@
 					"dest-filename": "Makefile"
 				}
 			]
-		},
-		{
-		   "name": "mm-common",
-		   "cleanup": [ "/" ],
-		   "sources": [
-		       {
-		           "type": "archive",
-		           "url": "https://download.gnome.org/sources/mm-common/0.9/mm-common-0.9.12.tar.xz",
-		           "sha256": "ceffdcce1e5b52742884c233ec604bf6fded12eea9da077ce7a62c02c87e7c0b"
-		       }
-		   ]
-		},
-		{
-		"name": "sigcpp",
-		"config-opts": ["--prefix=/app","--disable-documentation" ],
-		"cleanup": [ "/bin", "/share" ],
-		"sources": [
-			{
-				"type": "archive",
-				"url": "https://download.gnome.org/sources/libsigc%2B%2B/3.0/libsigc%2B%2B-3.0.7.tar.xz",
-				"sha256": "bfbe91c0d094ea6bbc6cbd3909b7d98c6561eea8b6d9c0c25add906a6e83d733"
-			}
-		]
-		},
-		{
-			"name": "glibmm",
-			"config-opts": ["--prefix=/app"],
-		        "cleanup": [ "/bin", "/share" ],
-			"buildsystem": "meson",
-		        "sources": [
-		                 {
-		                  "type": "archive",
-		                  "url": "https://download.gnome.org/sources/glibmm/2.68/glibmm-2.68.2.tar.xz",
-		                  "sha256": "91e0a8618f7b82db4aaf2648932ea2bcfe626ad030068c18fa2d106fd838d8ad"
-		               }
-		       ]
 		},
 		"shared-modules/dbus-glib/dbus-glib.json",
 		{
@@ -197,7 +147,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/GNOME/libxml2",
-					"branch": "master"
+					"tag": "v2.9.14"
 				}
 			]
 		},
@@ -287,7 +237,6 @@
 				}
 			]
 		},
-#ifdef __ARM__
 		{
 			"name": "libvolk",
 			"cleanup": [ "/bin", "/share" ],
@@ -299,38 +248,26 @@
 			],
 			"sources": [
 				{
-					"type": "archive",
-					"url": "https://swdownloads.analog.com/cse/scopydeps/volk-2.4.1.tar.gz",
-					"sha256": "61d681f90e0f30894f806ab050e9ba28260799c01f1ed0f58623942d8c7f4d48"
+					"type": "git",
+					"url": "https://github.com/gnuradio/volk",
+					"branch": "v2.5.1"
 				}
 			]
 		},
-#endif
 		{
-			"name": "gnuradio",
+			"name": "spdlog",
 			"cleanup": [ "/bin", "/share" ],
 			"builddir": true,
 			"buildsystem": "cmake",
 			"config-opts": [
-				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
-				"-DENABLE_DEFAULT=OFF", 
-				"-DENABLE_GNURADIO_RUNTIME=ON",
-				"-DENABLE_GR_ANALOG=ON",
-				"-DENABLE_GR_BLOCKS=ON",
-				"-DENABLE_GR_FFT=ON",
-				"-DENABLE_GR_FILTER=ON",
-				"-DENABLE_VOLK=ON",
-				EXPAND(DENABLE_INTERNAL_VOLK),
-                EXPAND(CMAKE_C_FLAGS)
-#ifdef __ARM__
-                , EXPAND(CMAKE_ASM_FLAGS)
-#endif
+            "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DSPDLOG_BUILD_SHARED=ON",
+            EXPAND(CMAKE_C_FLAGS), EXPAND(CMAKE_ASM_FLAGS)
 			],
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gnuradio",
-					"branch": "scopy"
+					"url": "https://github.com/gabime/spdlog",
+					"branch": "v1.10.0"
 				}
 			]
 		},
@@ -358,18 +295,41 @@
 			]
 		},
 		{
-			"name": "libtinyiiod",
+			"name": "libad9361",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/libad9361-iio"
+				}
+			]
+		},
+		{
+			"name": "gnuradio",
+			"cleanup": [ "/bin", "/share" ],
 			"builddir": true,
 			"buildsystem": "cmake",
 			"config-opts": [
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
-				"-DBUILD_SHARED_LIBS=OFF",
-				"-DBUILD_EXAMPLES=OFF"
+				"-DENABLE_DEFAULT=OFF",
+				"-DENABLE_GNURADIO_RUNTIME=ON",
+				"-DENABLE_GR_ANALOG=ON",
+				"-DENABLE_GR_BLOCKS=ON",
+				"-DENABLE_GR_FFT=ON",
+				"-DENABLE_GR_FILTER=ON",
+				"-DENABLE_GR_IIO=ON",
+                EXPAND(CMAKE_C_FLAGS)
+#ifdef __ARM__
+                , EXPAND(CMAKE_ASM_FLAGS)
+#endif
 			],
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/libtinyiiod"
+					"url": "https://github.com/gnuradio/gnuradio",
+					"tag": "v3.10.2.0"
 				}
 			]
 		},
@@ -390,31 +350,6 @@
 			]
 		},
 		{
-			"name": "libad9361",
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app" ],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/analogdevicesinc/libad9361-iio"
-				}
-			]
-		},
-        {
-			"name": "gr-iio",
-			"builddir": true,
-			"buildsystem": "cmake",
-			"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_BUILD_TYPE=Release" ],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gr-iio",
-					"branch": "upgrade-3.8"
-				}
-			]
-		},
-		{
 			"name": "libm2k",
 			"builddir": true,
 			"buildsystem": "cmake",
@@ -422,14 +357,14 @@
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
 				"-DENABLE_PYTHON=OFF",
 				"-DENABLE_CSHARP=OFF",
-				"-DENABLE_LOG=ON" ,
-				"--debug-find"
+				"-DENABLE_LOG=ON",
+				"-DENABLE_TOOLS=ON"
 			],
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libm2k",
-					"branch": "master"
+					"commit": "b37bbeb24e159fe975390d72cfd87629b40f352d"
 				}
 			]
 		},
@@ -442,7 +377,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gr-m2k"
+					"url": "https://github.com/analogdevicesinc/gr-m2k",
+					"branch" : "3.10"
 				}
 			]
 		},
@@ -455,7 +391,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gr-scopy"
+					"url": "https://github.com/analogdevicesinc/gr-scopy",
+					"branch" : "3.10"
 				}
 			]
 		},
@@ -497,7 +434,25 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/sigrokproject/libsigrokdecode"
+					"url": "https://github.com/sigrokproject/libsigrokdecode",
+					"commit": "e556e1168af7027df08622ecfe11309811249e81"
+				}
+			]
+		},
+		{
+			"name": "libtinyiiod",
+			"builddir": true,
+			"buildsystem": "cmake",
+			"config-opts": [
+				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
+				"-DBUILD_SHARED_LIBS=OFF",
+				"-DBUILD_EXAMPLES=OFF"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/analogdevicesinc/libtinyiiod",
+					"commit": "15e79e7c0064b0476ab4608d02d5efb988b93fc9"
 				}
 			]
 		},
@@ -509,7 +464,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/iio-emu"
+					"url": "https://github.com/analogdevicesinc/iio-emu",
+					"commit": "b8208485f50573a38263031ab05e9cd30712bf0c"
 				}
 			]
 		},
@@ -537,7 +493,7 @@
 			{
 				"type": "git",
 				"url": "https://github.com/analogdevicesinc/scopy",
-				"branch": "pkgconfig-ver-update"
+				"branch": "dev-merge-attempt"
 			}
 		]
 	}
