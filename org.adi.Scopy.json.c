@@ -378,7 +378,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/gr-m2k",
-					"branch" : "3.10"
+					"branch" : "master"
 				}
 			]
 		},
@@ -493,7 +493,7 @@
 			{
 				"type": "git",
 				"url": "https://github.com/analogdevicesinc/scopy",
-				"branch": "dev-merge-attempt"
+				"branch": "ci-gr-3.10"
 			}
 		]
 	}
