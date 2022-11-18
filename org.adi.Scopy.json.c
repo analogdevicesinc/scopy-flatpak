@@ -92,7 +92,7 @@
 				}
 			]
 		},
-		"shared-modules/dbus-glib/dbus-glib.json",
+		"shared-modules/dbus-glib/dbus-glib-0.110.json",
 		{
 			"name": "dbus-glib-submodule"
 		},
