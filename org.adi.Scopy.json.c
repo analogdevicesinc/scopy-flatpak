@@ -329,7 +329,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/gnuradio/gnuradio",
-					"tag": "v3.10.4.0"
+					"branch" : "maint-3.10"
 				}
 			]
 		},
