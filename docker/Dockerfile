@@ -14,8 +14,8 @@ RUN apt install flatpak flatpak-builder -y
 
 # Install remote
 RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-RUN flatpak install flathub org.kde.Platform//5.15 -y
-RUN flatpak install flathub org.kde.Sdk//5.15 -y
+RUN flatpak install flathub org.kde.Platform//5.15-22.08 -y
+RUN flatpak install flathub org.kde.Sdk//5.15-22.08 -y
 
 # Clean
 RUN apt-get clean -y && apt-get autoclean -y
