@@ -358,7 +358,8 @@
 				"-DENABLE_PYTHON=OFF",
 				"-DENABLE_CSHARP=OFF",
 				"-DENABLE_LOG=ON",
-				"-DENABLE_TOOLS=ON"
+				"-DENABLE_TOOLS=ON",
+				"-DINSTALL_UDEV_RULES=OFF"
 			],
 			"sources": [
 				{
