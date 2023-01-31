@@ -441,7 +441,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/gr-m2k"
+					"url": "https://github.com/analogdevicesinc/gr-m2k",
+					"branch":"maint-3.8"
 				}
 			]
 		},
