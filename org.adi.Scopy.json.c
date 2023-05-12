@@ -464,6 +464,8 @@
 				}
 			]
 		},
+#if 0
+
 		{
 			"name": "iio-emu",
 			"builddir": true,
@@ -477,7 +479,6 @@
 				}
 			]
 		},
-#if 0
 		{
 			"name": "qtadvanceddocking",
 			"builddir": true,
@@ -496,12 +497,12 @@
 		"name": "scopy",
 		"builddir": true,
 		"buildsystem": "cmake",
-		"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF"],
+		"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DCMAKE_BUILD_TYPE=Release"],
 		"sources": [
 			{
 				"type": "git",
 				"url": "https://github.com/analogdevicesinc/scopy",
-				"branch": "ci-gr-3.10"
+				"branch": "scopy2-ci-merge-attempt2"
 			}
 		]
 	}
