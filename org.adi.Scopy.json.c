@@ -43,6 +43,13 @@
 	],
 	"modules": [
 		{
+			"name":"git-config-update",
+			"buildsystem": "simple",
+			"build-commands": [
+				"git config --global protocol.file.allow always"
+			]
+		},
+		{
 			"name": "sshpass",
 			"sources": [
 				{
