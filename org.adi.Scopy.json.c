@@ -278,6 +278,23 @@
 				}
 			]
 		},
+
+		{
+
+			"name": "serialport",
+			"builddir": false,
+			"buildsystem": "autotools",
+			"config-opts": [ "--prefix=/app" ],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/sigrokproject/libserialport",
+					"branch" : "master"
+				}
+			]
+
+		},
+
 		{
 			"name": "libiio",
 			"builddir": true,
@@ -291,6 +308,7 @@
 				"-DHAVE_DNS_SD:BOOL=OFF",
 				"-DWITH_IIOD:BOOL=OFF",
 				"-DWITH_LOCAL_BACKEND:BOOL=OFF",
+				"-DWITH_SERIAL_BACKEND:BOOL=ON",
 				"-DWITH_MATLAB_BINDINGS_API:BOOL=OFF"
 			],
 			"sources": [
