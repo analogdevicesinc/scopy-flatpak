@@ -17,7 +17,8 @@
 		"--filesystem=host:create",
 		"--filesystem=~/.config/dconf:create",
 		"--filesystem=xdg-config/ADI:create",
-		"--device=all"
+		"--device=all",
+		"--system-talk-name=org.freedesktop.Avahi"
 	],
 
 	"build-options" : {
@@ -149,7 +150,7 @@
 		{
 			"name": "libxml2",
 			"cleanup": [ "/bin", "/share" ],
-			"config-opts": [ "--without-python" ],
+			"config-opts": [ "--prefix=/app"],
 			"sources": [
 				{
 					"type": "git",
@@ -300,22 +301,22 @@
 			"builddir": true,
 			"buildsystem": "cmake",
 			"config-opts": [
+				"-DCMAKE_PREFIX_PATH:PATH=/app",
 				"-DCMAKE_INSTALL_PREFIX:PATH=/app",
 				"-DCMAKE_INSTALL_LIBDIR:STRING=lib",
 				"-DINSTALL_UDEV_RULE:BOOL=OFF",
 				"-DWITH_TESTS:BOOL=OFF",
 				"-DWITH_DOC:BOOL=OFF",
-				"-DHAVE_DNS_SD:BOOL=OFF",
+				"-DHAVE_DNS_SD:BOOL=ON",
 				"-DWITH_IIOD:BOOL=OFF",
 				"-DWITH_LOCAL_BACKEND:BOOL=OFF",
-				"-DWITH_SERIAL_BACKEND:BOOL=ON",
-				"-DWITH_MATLAB_BINDINGS_API:BOOL=OFF"
+				"-DWITH_SERIAL_BACKEND:BOOL=ON"
 			],
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"commit": "b1099c96c9ac16d468995a65b79474ba03de305c"
+					"commit": "879e49b976748e08639ca9ebe88a628c1633eed0"
 				}
 			]
 		},
