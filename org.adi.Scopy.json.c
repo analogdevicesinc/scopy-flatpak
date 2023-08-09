@@ -517,7 +517,7 @@
 		"name": "scopy",
 		"builddir": true,
 		"buildsystem": "cmake",
-		"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF"],
+		"config-opts": [ "-DCMAKE_INSTALL_PREFIX:PATH=/app", "-DCMAKE_PREFIX_PATH=/app/lib/pkgconfig;/app/lib/cmake", "-DWITH_DOC=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DBREAKPAD_HANDLER=OFF", "-DWITH_NATIVEDIALOGS=OFF", "-DCLONE_IIO_EMU=OFF", "-DENABLE_TESTING=OFF"],
 		"sources": [
 			{
 				"type": "git",
