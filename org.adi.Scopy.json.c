@@ -484,7 +484,6 @@
 				}
 			]
 		},
-#if 0
 
 		{
 			"name": "iio-emu",
@@ -512,7 +511,6 @@
 				}
 			]
 		},
-#endif
 	{
 		"name": "scopy",
 		"builddir": true,
