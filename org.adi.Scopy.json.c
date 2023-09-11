@@ -317,7 +317,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"commit": "879e49b976748e08639ca9ebe88a628c1633eed0"
+					"tag": "v0.25"
 				}
 			]
 		},
