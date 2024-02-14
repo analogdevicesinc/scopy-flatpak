@@ -329,7 +329,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/analogdevicesinc/libad9361-iio"
+					"url": "https://github.com/analogdevicesinc/libad9361-iio",
+					"branch" : "main"
 				}
 			]
 		},
@@ -406,7 +407,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/gr-m2k",
-					"branch" : "master"
+					"branch" : "main"
 				}
 			]
 		},
