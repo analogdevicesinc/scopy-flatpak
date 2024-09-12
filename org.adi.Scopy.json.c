@@ -317,7 +317,7 @@
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libiio",
-					"commit": "879e49b976748e08639ca9ebe88a628c1633eed0"
+					"branch": "libiio-v0"
 				}
 			]
 		},
@@ -387,13 +387,14 @@
 				"-DENABLE_CSHARP=OFF",
 				"-DENABLE_LOG=ON",
 				"-DENABLE_TOOLS=ON",
+				"-DBUILD_EXAMPLES=OFF",
 				"-DINSTALL_UDEV_RULES=OFF"
 			],
 			"sources": [
 				{
 					"type": "git",
 					"url": "https://github.com/analogdevicesinc/libm2k",
-					"commit": "b37bbeb24e159fe975390d72cfd87629b40f352d"
+					"commit": "5b20a2917d054f89243019f4e98f69415c758258"
 				}
 			]
 		},
@@ -463,8 +464,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"url": "https://github.com/sigrokproject/libsigrokdecode",
-					"commit": "e556e1168af7027df08622ecfe11309811249e81"
+					"url": "https://github.com/analogdevicesinc/libsigrokdecode",
+					"branch": "decoders/AD559XR"
 				}
 			]
 		},
@@ -522,7 +523,7 @@
 			{
 				"type": "git",
 				"url": "https://github.com/analogdevicesinc/scopy",
-				"branch": "ci-gr-3.10"
+				"branch": "Scopy-1.5.0"
 			}
 		]
 	}
