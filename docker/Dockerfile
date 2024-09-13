@@ -12,6 +12,7 @@ RUN set -ex && \
         apt-utils \
         build-essential \
         git \
+        jq \
         mm-common \
         software-properties-common \
         subversion \
